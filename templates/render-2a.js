@@ -227,7 +227,7 @@ export function renderReport(data, opts = {}) {
   });
   h += `</div>`;
   h += `<div style="padding:18px 40px;background:${V};color:#FFFFFF;display:flex;flex-direction:column;gap:8px;"><div style="display:flex;justify-content:space-between;${MONO}font-size:11px;"><span>THE COMMUNITY &amp; PLATFORM DAILY</span><span>${esc(m.date)}</span></div><div style="font-size:11px;line-height:1.6;color:#E4E0FF;">${esc(data.footer || '본 리포트는 커뮤니티 및 소셜 데이터를 자동 수집·요약한 것으로 원문 게시자의 의견과 무관하며, 특정 이슈에 대한 편집부 입장을 대변하지 않습니다.')}</div></div>`;
-  const card = `<div style="width:680px;max-width:100%;margin:0 auto;background:#FFFFFF;color:${INK};${BODY}">${h}</div>`;
+  const card = `<div style="width:1080px;max-width:100%;margin:0 auto;background:#FFFFFF;color:${INK};${BODY}">${h}</div>`;
   if (mode === 'fragment') return card;
   return `<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>커뮤니티 &amp; 미디어플랫폼 리포트 ${esc(m.date)}</title>`
     + `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap">`
