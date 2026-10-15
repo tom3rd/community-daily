@@ -114,3 +114,7 @@ node templates/build.mjs data/YYYY-MM-DD.json --asset-base https://www.tom3rd.co
 
 ## 변경 이력
 - 2026-10-13: 2a 템플릿 도입. 산점도 SVG 인라인화(툴팁 유지), 익명 게시판 ANONYMOUS 표시·회차 표시 추가, SKT Sans 웹폰트 → Pretendard 대체, 리포트 스타일 클래스 압축(15만→9만 자).
+
+## 다른 Send 리포트 (Report Kit)
+
+커뮤니티 데일리를 제외한 모든 Send 리포트는 같은 2a 디자인의 공용 킷 `templates/render-kit.js` + `templates/build-kit.mjs`로 만든다. 사용법은 `docs/KIT.md`.

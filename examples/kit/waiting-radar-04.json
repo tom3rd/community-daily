@@ -1,0 +1,52 @@
+{
+  "meta": {
+    "series": "Waiting Radar",
+    "kicker": "SNS가 먼저 찾아낸, 다음 주 웨이팅 맛집 리포트",
+    "no": "ISSUE 04",
+    "label": "WEEKLY",
+    "date": "2026-10-04",
+    "dateText": "2026년 10월 4일 (일) 발행",
+    "chip": "HOT 5 · RISING 3",
+    "coverage": "조사 기간 9/28~10/4 · 서울·경기 전역 뉴스 스캔 → 인스타그램 교차검증",
+    "issueId": "04",
+    "title": "Waiting Radar · Issue 04"
+  },
+  "intro": "Waiting Radar는 SNS에서 입소문이 크게 나기 전, 실측 데이터로 다음 줄 설 곳을 먼저 짚어내는 주간 맛집 리포트입니다. 매주 서울·경기 전역의 뉴스와 인스타그램 데이터(게시 속도·좋아요·실제 방문 후기)를 교차검증해, 이미 확실히 뜬 곳 5곳과 아직 안 떴지만 조짐이 보이는 곳 3곳을 골라 전해드려요.",
+  "sections": [
+    { "id": "pulse", "title": "이번 주 조사 지표", "blocks": [
+      { "type": "kpis", "items": [
+        { "label": "조사 키워드", "value": "12건", "sub": "뉴스 14개 권역 + 해시태그" },
+        { "label": "지역 분포", "value": "3 · 5", "sub": "서울 3곳 · 경기 5곳" },
+        { "label": "신규 오픈·확장", "value": "4건", "sub": "지난 회차 <a href=\"https://www.send.co/a/WzRjuHP4\">Issue 03 · 성수/일산</a>" }
+      ]}
+    ]},
+    { "id": "hot", "title": "이번 주의 열기", "sub": "HOT 5 · 이미 줄이 생겼거나 SNS 반응이 확실히 터진 곳", "blocks": [
+      { "type": "picks", "hero": true, "items": [
+        { "rank": "HOT 01", "name": "치폴레 코리아 강남점 — 줄 안 서고 먹는 픽업 전용 앱으로 2라운드 흥행", "place": "서울 서초구 강남대로 · 멕시칸", "why": "아시아 1호점 오픈 후 한 달 내내 100m 웨이팅이 화제였던 치폴레가 9월 30일 픽업 전용 앱 '치폴레 코리아'를 출시하며 다시 화제의 중심에 섰어요. Issue 02에도 소개됐던 곳이지만 이번엔 완전히 새로운 소식(앱 출시)으로 다시 선정했습니다.", "proof": "인증 118좋아요 · 2026-10-01 · 복수 매체 보도 교차검증", "credit": "사진 출처: @daily_fnb", "img": "https://scontent-mxp2-1.cdninstagram.com/v/t51.82787-15/830729269_17907331425481758_8114754093861197015_n.jpg?stp=dst-jpg_e15_p360x360_tt6&_nc_cat=104&ig_cache_key=Mzk5NzQ4NzM2OTc3NTMzMDUwNw%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuNzIwLnNkci52aWRlb19kZWZhdWx0X2NvdmVyX2ZyYW1lLkMzIn0%3D&_nc_ohc=6Xz5uS8arEcQ7kNvwHrkZQm&_nc_oc=Ado1OeIsdFd1Szw-2PWZeAtH0AbwxExbYcb1b5t5YOvWtKtIBQYqBEZ_sy_YPOolNqU&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-mxp2-1.cdninstagram.com&_nc_gid=sH0B3FiJg53Kfk_yhdczMw&_nc_ss=7a3ba&oh=00_AQOwKjfkLQLLwznHaw1KRcbjj_EytE94GLN7gAotqQUa-Q&oe=6AC8B3DD" }
+      ]},
+      { "type": "picks", "items": [
+        { "rank": "HOT 02", "name": "이가네양꼬치 판교본점", "place": "경기 성남 · 양꼬치", "why": "판교·분당을 넘어 수도권 전역에서 찾는 양꼬치 맛집. 숯불 양갈비·양꼬치 상세 방문기가 이번 주에도 이어졌어요.", "proof": "121좋아요", "credit": "사진 출처: @jy_derek_yu", "img": "https://scontent-cph2-1.cdninstagram.com/v/t51.82787-15/835060374_18464025208184916_2830931440023425819_n.heic?stp=dst-jpg_e35_p1080x1080_sh2.08_tt6&_nc_cat=105&ig_cache_key=NDAwMDMzNTU2NzU0MTQ0NzIxMA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=wZ8Pierw714Q7kNvwHjfTtw&_nc_oc=AdqwKFIfuPcjMReL-G7bCF-H1fzoo15umKXi3BfB38Kn542kMqD-mvNIurwOAwnTgufCZijzmgba5LBoPwahu5kz&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-cph2-1.cdninstagram.com&_nc_gid=MFg0ehazdu3jnF0jLpENMA&_nc_ss=7a3ba&oh=00_AQN9oQOyORmGelS4SdnngOkwITrXoaGEb30f6cGIRJc2ag&oe=6AC8B64B" },
+        { "rank": "HOT 03", "name": "고기리막국수", "place": "경기 용인 고기동 · 막국수", "why": "'원조 들기름막국수'로 불리는 곳. 주말엔 40명대 대기, 평일에도 1시간 웨이팅 후기가 꾸준히 올라왔어요.", "proof": "46좋아요", "credit": "사진 출처: @jj_eei2", "img": "https://scontent-bru2-1.cdninstagram.com/v/t51.82787-15/837494902_18440120794196379_5681083604878211340_n.jpg?stp=dst-jpg_e35_p1080x1080_sh2.08_tt6&_nc_cat=109&ig_cache_key=Mzk5OTg3MzM1NTM2ODUwNTM0Mg%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMzA3Mi5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=pMfhXF2X4bcQ7kNvwHgi_3q&_nc_oc=AdrJBzGUgi0UfQtqmIB4wtc21uAchyEj3I0JUA26zDrbU_I6YOle9Mm52Le0h275hGY&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-bru2-1.cdninstagram.com&_nc_gid=krsTL8vXUyJSY0cE-jwEvg&_nc_ss=7a3ba&oh=00_AQMI-yuM-a6B2kKn8BW0kFIbEEh3KswD0UocvqZTEXhSkg&oe=6AC89DAA" },
+        { "rank": "HOT 04", "name": "bd버거 성수역연무장길점", "place": "서울 성동구 성수동 · 수제버거", "why": "성수 수제버거 격전지에서 꾸준히 이름이 오르는 와사비쉬림프버거 맛집. 이번 주에도 신규 방문 후기가 올라왔어요.", "proof": "개인 방문 후기 23좋아요 · 2026-09-28", "credit": "사진 출처: @mumuring_food", "img": "https://scontent-cph2-1.cdninstagram.com/v/t51.82787-15/825323134_18098060984250742_3226513149731367049_n.jpg?stp=dst-jpg_e35_s1080x1080_sh2.08_tt6&_nc_cat=111&ig_cache_key=Mzk5NjA4MTI4OTY5NDE3NDg3OQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMjA0OC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=-ZgkF-IxpQMQ7kNvwECVa0c&_nc_oc=AdoSO1YW63LFXNGRCMRaIv9zxVsZ2U0-O6KBQPbCsKtpgfpQHoEtF_HHDZe7EvUiO5sBqIpXcEpOr0DYN9B9A3CG&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-cph2-1.cdninstagram.com&_nc_gid=9Rs7HyvWfwzaDksj39bxyw&_nc_ss=7a3ba&oh=00_AQNYavosJQkpAOHXuWgtt06ZqnbNWNXKL70DIP3cx-OWWg&oe=6AC8B151" },
+        { "rank": "HOT 05", "name": "3959버거 팝업", "place": "서울 종로구 사직동 · 팝업 버거", "why": "유튜브 '세계는 요지경'×'영알남' 콜라보 팝업. 개장 첫날 4시간 대기 행렬이 생기며 백화점 입점 제안까지 받았다는 소식이 나왔어요.", "proof": "방문 후기 2건 + 머니투데이 보도(10/4, \"4시간 대기\")", "credit": "사진 출처: @kjh_niceggul", "img": "https://scontent-cph2-1.cdninstagram.com/v/t51.82787-15/834644628_18483022960107429_2134982323853112070_n.webp?stp=dst-webp_p1080x1080_sh2.08&_nc_cat=110&ig_cache_key=NDAwMDMyMDk2OTE4NDE1NDAzOQ%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=TzISAYxY04UQ7kNvwETaU5I&_nc_oc=AdpeuKE4gWX27gMWP_UGIdaSVCmJLefs7ysUGEO1bcjpvL4fKPuqprof16Q5rgJfzZQ&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-cph2-1.cdninstagram.com&_nc_gid=yV9ixC7vS3_vvd34aGKjlA&_nc_ss=7a3ba&oh=00_AQNOe49Y-jKF4NB1mndAX3jtPhSOdWMGmmEo-3SxS5zEtw&oe=6AC89B81" }
+      ]}
+    ]},
+    { "id": "rising", "title": "뜨는 조짐", "sub": "RISING 3 · 지금 알아두면 다음 주엔 웨이팅", "blocks": [
+      { "type": "picks", "items": [
+        { "rank": "RISING", "name": "소해 (장어덮밥)", "place": "경기 성남 분당구 유스페이스1", "why": "판교 유스페이스에 새로 생긴 장어 요리 전문점. 숯불 히츠마부시로 입소문이 시작되는 단계예요.", "proof": "신규 오픈 후기 98좋아요 · 2026-10-02", "credit": "사진 출처: @chae_ddo.eat", "img": "https://scontent-cph2-1.cdninstagram.com/v/t51.82787-15/833324702_18091144370416283_9103429634676329905_n.jpg?stp=dst-jpegr_e35_p1080x1080_tt6&_nc_cat=102&ig_cache_key=Mzk5OTEzMDk3NDYyMjc2MzM0NA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMzAyNC5oZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=Z6LNrQcRL2cQ7kNvwFrIHre&_nc_oc=AdoZzZhD5ES1TbpFieYDtSM3b9HmTc94ugYfllBf1IMvP3MBRwiGdEdqhW1h5nVX0zjFpv6BNZtdJRBFBjAn96Lq&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&se=-1&_nc_ht=scontent-cph2-1.cdninstagram.com&_nc_gid=MFg0ehazdu3jnF0jLpENMA&_nc_ss=7a3ba&oh=00_AQOhLzLxB7UU-VwlJR_vGSNFUw-Qk7HgMbrfx1Oa7TvnZA&oe=6AC8A4F3" },
+        { "rank": "RISING", "name": "르씨나 Le scène", "place": "경기 성남 분당구 정자동 · 프렌치 가정식", "why": "'흑백요리사' 최강록 셰프의 제자가 새로 연 프렌치 가정식집. 공개 직후 압도적인 반응으로 분당 외식가에서 빠르게 번지고 있어요.", "proof": "신규 오픈 소개 936좋아요 — 이번 주 조사 대상 중 최고", "credit": "사진 출처: @jy_derek_yu", "img": "https://scontent-cph2-1.cdninstagram.com/v/t51.82787-15/833846682_18463660330184916_5667929356667656805_n.heic?stp=dst-jpg_e35_p1080x1080_sh2.08_tt6&_nc_cat=100&ig_cache_key=Mzk5ODk3NDE5NTE2MzI4NjE0OA%3D%3D.3-ccb7-5&ccb=7-5&_nc_sid=58cdad&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0ueHBpZHMuMTQ0MC5zZHIucmVndWxhcl9waG90by5DMyJ9&_nc_ohc=tGMMX4y2bbsQ7kNvwEjW_Kf&_nc_oc=Adr1jG64ALNeVzcbtCsE-wq83W2_7uXLbXuq51-2cgIvSFnMDGzA7GBMZYPZcwhTO-eHSfF1eWP2ma-zephROPpn&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent-cph2-1.cdninstagram.com&_nc_gid=RrN2IdTbafNZXpotYunOmg&_nc_ss=7a3ba&oh=00_AQPdtSAsGkeBN5_7_msh3Nvksbcnxt_rpjfqhfcw751faw&oe=6AC8C229" },
+        { "rank": "RISING", "name": "가매일식 판교점", "place": "경기 성남 · 현대백화점 판교점 9층", "why": "현대그린푸드가 안유성 조리명장과 협업한 프리미엄 일식 1호점(9/23 오픈, 60석+PDR 3개). 아직 SNS 확산 전 단계라 복수 언론 보도로 교차검증했어요.", "proof": "뉴스로만 확인 — 인스타그램 교차검증 없음 · 사진 없음" }
+      ]}
+    ]},
+    { "id": "method", "title": "이렇게 골랐어요", "blocks": [
+      { "type": "desk", "items": [
+        { "role": "조사 범위", "title": "9/28~10/4, 수도권 전역 스캔 후 교차검증", "paras": ["서울·경기 전역의 버즈를 광범위하게 스캔한 뒤, 화제성이 포착된 지역·아이템만 인스타그램 해시태그(#치폴레코리아·#고기리막국수·#판교맛집·#성수수제버거·#한남동맛집 등)와 네이버 뉴스 검색으로 교차검증했습니다."] },
+        { "role": "지역 범위", "title": "이번 주 신호: 서초·종로·성동·분당·수지", "paras": ["조사 대상 자체는 수도권 전역이며, 이번 주 실제로 뚜렷한 신호가 확인된 곳은 위 5개 지역입니다."] },
+        { "role": "HOT / RISING", "title": "게시 속도 · 좋아요 · 방문 후기 · 웨이팅 언급", "paras": ["RISING은 게시물 수는 적지만 신규 오픈·확장·초기 반응 등 상승 조짐이 뚜렷한 곳입니다."] },
+        { "role": "이미지", "title": "실제 게시물 이미지, 원 게시자 출처 표기", "paras": ["협찬·자기홍보, 뉴스로만 확인된 항목은 본문에 명시했습니다. 가짜 수치는 사용하지 않습니다."] }
+      ]}
+    ]},
+    { "id": "board", "title": "익명 게시판" }
+  ],
+  "footer": { "left": "WAITING RADAR · 매주 월요일 아침 발행", "text": "다음 주에도 레이더 켜둘게요. 이 리포트는 '주간 맛집 콘텐츠 브리핑'의 스핀오프입니다.", "links": [ { "text": "이전 회차 아카이브", "url": "https://www.send.co/a/WzRjuHP4" } ] }
+}
