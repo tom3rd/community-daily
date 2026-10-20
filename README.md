@@ -32,12 +32,12 @@ node templates/build.mjs data/YYYY-MM-DD.json --asset-base https://www.tom3rd.co
 # 6) out/community_daily_email_YYYY-MM-DD.html 을 Resend html로 발송
 ```
 
-- report 파일은 반복 스타일을 클래스로 묶어 약 9~10만 자다(화면은 묶기 전과 픽셀 단위로 동일). Send·Drive에 그대로 넘긴다.
+- report 파일은 반복 스타일을 클래스로 묶어 약 11~13만 자다(2026-10-21 v3 레이아웃부터)(화면은 묶기 전과 픽셀 단위로 동일). Send·Drive에 그대로 넘긴다.
 - 파일 내용을 도구 인자로 넘길 때는 파일을 다시 읽어 그대로 쓴다. 손으로 다시 타이핑하거나 요약하지 않는다.
 
 ## 2. 요일 플랜과 섹션
 
-공통 순서(렌더러가 고정): 오늘의 핵심 3줄 → TOP·SIDE → `hot` → `signal` → `trend` → `sns` → `special`(평일) → `news` → `desk` → `search` → `voc` → `sources` → `board`
+공통 순서(렌더러가 고정, 2026-10-21 v3): 오늘의 핵심 3줄(+숫자 카드) → TOP·SIDE → `signal` → `hot` → `trend`+`sns`(한 섹션 "화력 & SNS 교차검증"으로 합쳐 그림) → `special`(평일) → `news` → `desk` → `search` → `voc` → `sources` → `board`
 
 | 요일 | special (`title` / `sub`) |
 |---|---|
@@ -88,6 +88,32 @@ node templates/build.mjs data/YYYY-MM-DD.json --asset-base https://www.tom3rd.co
 | `stack` | cols[[blocks],…] | 세로 묶음 |
 | `sources` | html | 출처 링크 묶음 |
 
+### 3-1. v3 레이아웃 필드 (2026-10-21부터, 모두 선택이지만 매일 채운다)
+
+2026-10-20 사용자 피드백으로 확정한 레이아웃이다. 원칙: **결론과 숫자는 첫 화면에, 긴 근거는 접기(＋)로.** 기존 필드(`paras`, 블록들)는 그대로 쓰고, 아래 필드를 더한다. 없으면 렌더러가 기존 방식으로 대체하지만 그러면 글이 빽빽해지므로 반드시 채운다. 전체 예시는 `examples/2026-10-20.json`.
+
+| 위치 | 필드 | 규칙 |
+|---|---|---|
+| 최상위 | `heroKpis` [{value, label, sub}] ×4 | 오늘의 핵심 아래 숫자 카드. ① 화력 1위 수치 ② TOP 핵심 숫자 ③ SIDE 핵심 숫자 ④ SKB 부정 건수 |
+| `top`, `side` | `lead` [문단, 문단] | **정확히 2문단**, 합계 400~520자. 1문단 = 사실·숫자, 2문단 = 커뮤니티 반응(대표 댓글·수치·검색량). 기존 `paras`(3~4문단 원문)는 그대로 쓰고 "원문 전체 보기"로 접힌다 |
+| `top`, `side` | `so` | "그래서" 한 문장(60~90자). IPTV·OTT 실무 시사점 |
+| `top`, `side` | `fig` {title, rows[{label, value 숫자, hl, text?}], caption, bigs[{value, label, sub}]} | 본문 위 그래픽. rows는 비교 막대 3~4개(오늘 주인공 `hl:true`), bigs는 큰 숫자 2개. 기사·게시글에 실제로 있는 숫자만 쓴다 |
+| `top` | `quote` {text, meta, more{text, meta}, video{id, title, meta}} | 대표 댓글 인용(좋아요 1위). `video`는 근거 영상이 유튜브일 때만(유튜브 영상 ID) |
+| `hot` 각 item | `short` / `so` / `stat` | `short` 카드 제목(20자 안팎, ①·부제 없이), `so` 결론 한 줄(60자 안팎), `stat` 대표 숫자 1개(예: "화력 3,231 · 음원 997만"). 원래 `title`·`paras`는 접기 안에 그대로 |
+| `sns` 섹션 | `signal` [{issue, yt, tt, ig, verdict}] | 플랫폼별 반응표. yt/tt/ig 값은 "강" / "약" / ""(미수집). 5행 안팎 |
+| `special` 각 subsection | `videos` [{id, title, meta}] | 유튜브 썸네일 카드(최대 4개). **유튜브 영상만**, 미성년 출연자가 중심인 영상은 넣지 않는다. 뉴스 사진·커뮤니티 캡처 등 외부 이미지는 쓰지 않는다 |
+| `desk` 각 item | `brief` | 첫 화면에 보이는 한 문장(50~70자). `paras` 전문은 접힌다 |
+| `search` 섹션 | `down` [{kw, delta}] (선택) | "많이 내린 검색어" 칩. 없으면 끝 `caption`의 "하락 폭이 큰 검색어: A -x%, B -y%." 문장에서 자동 추출하므로 그 형식을 지킨다 |
+| `voc` 섹션 | `glance` [3문장] | 맨 위 "한눈에 보기". 쉬운 말(불만·문의·칭찬)로 ① SKB 직접 언급 건수 구성 ② 경보 여부와 기준 ③ 사칭 의심 추이 |
+| `voc` 대표 글 `cards` item | `summary` | 2~3줄 요약(90~130자). 기존 5~7문장 본문은 "자세한 요약"으로 접히고 "원문 보기" 링크는 본문 끝 `<a href>`에서 자동으로 꺼낸다 |
+| `voc` `watch` item | `summary` | 한 줄 요약. 원문 링크는 자동 |
+
+- **VoC 분량은 줄이지 않는다**(예약 프롬프트의 ⑪ 블록 순서 그대로). 요약 `text`는 전문 용어 대신 쉬운 말로 쓴다. 표(이슈 유형별·채널별·일별 이력)는 렌더러가 배지·강조로 자동 정리한다.
+- **리틀 시그널은 줄이지 않는다.** `watch` 항목 본문은 지금 분량(3~4문장 + 원문 링크) 그대로. 위의 단계 흐름도(포착→확산→정착/소멸 개수)는 tag와 소멸 caption("소멸 판정 N건")에서 자동 계산한다.
+- **요일 특집은 지금 분량 그대로**(하위 소제목 번호는 더 이상 표시하지 않는다).
+- 화력 & SNS 섹션은 첫 화면에 화력 막대 6개 + `signal` 표만 보이고, 기존 `trend`·`sns` 블록(구글 트렌드·네이버 등락·라이프사이클·산점도·틱톡·인스타·교차검증 표)은 "수치 상세 보기"로 접힌다. 블록 작성 규칙은 그대로다.
+- 뉴스는 제목 목록이 보이고 기사 요약은 접힌다. Top 20은 비고까지 2단으로 보인다(비고는 한 줄 30자 안팎으로 짧게).
+
 ## 4. 섹션별 작성 규칙
 
 - **brief(정확히 3개)**: ① TOP STORY 요지 ② 화력 1위 이슈 ③ SKB VoC 부정·문의 건수와 전일 대비(“경보 없음” 같은 문구 금지; VoC 블록이 미갱신이면 신규 시그널). `text` 60자 이내, `meta`에 근거 수치와 섹션명.
@@ -113,6 +139,7 @@ node templates/build.mjs data/YYYY-MM-DD.json --asset-base https://www.tom3rd.co
 - `templates/README.original.md`: 디자인 패키지 원본 설명.
 
 ## 변경 이력
+- 2026-10-21: v3 레이아웃 — 여백·섹션 아이콘·그래픽(비교 막대·큰 숫자·인용·유튜브 썸네일), 근거 접기, 시그널을 화제 앞으로, trend+sns 합본, Top 20 비고 노출, VoC 표 가독성 개선. 새 필드는 3-1절.
 - 2026-10-13: 2a 템플릿 도입. 산점도 SVG 인라인화(툴팁 유지), 익명 게시판 ANONYMOUS 표시·회차 표시 추가, SKT Sans 웹폰트 → Pretendard 대체, 리포트 스타일 클래스 압축(15만→9만 자).
 
 ## 다른 Send 리포트 (Report Kit)

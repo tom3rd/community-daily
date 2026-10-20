@@ -2,6 +2,7 @@
 // Usage: import { renderReport, planFor, validate } from './render-2a.js';
 //        const html = renderReport(data, { mode: 'full', assetBase: 'https://cdn.example.com/daily/' });
 
+import * as V3 from './v3.js';
 const V = '#3617CE', INK = '#111111', TXT = '#2A2A2A', SUB = '#555555', MUTED = '#666666';
 const TINT = '#F1EFFC', PANEL = '#F7F6FB', RULE = '#DCDAD3', HAIR = '#E3E0EE';
 const MONO = "font-family:'IBM Plex Mono',monospace;";
@@ -10,8 +11,8 @@ const BODY = "font-family:'SKT Sans Text','Pretendard Variable',Pretendard,sans-
 const LC = { 조짐: '#E0A030', 포착: '#E0A030', 확산: V, 정착: '#3E9B6A', 소멸: '#8A8F98' };
 
 export const SECTIONS = {
-  hot: { title: '오늘의 화제', sub: 'TOP 6' },
-  signal: { title: '리틀 시그널 워치' },
+  hot: { title: '오늘의 화제 TOP 6' },
+  signal: { title: '리틀 시그널 워치', sub: '내일의 이슈 후보 — 아직 작지만 커질 수 있는 신호' },
   trend: { title: 'TREND', sub: '화력 · 라이프사이클' },
   sns: { title: 'SNS 크로스플랫폼 교차검증' },
   special: { title: '요일 특집' },
@@ -22,7 +23,7 @@ export const SECTIONS = {
   sources: { title: '출처' },
   board: { title: '익명 게시판', sub: 'ANONYMOUS' }
 };
-export const ORDER = ['hot', 'signal', 'trend', 'sns', 'special', 'news', 'desk', 'search', 'voc', 'sources', 'board'];
+export const ORDER = ['signal', 'hot', 'trend', 'sns', 'special', 'news', 'desk', 'search', 'voc', 'sources', 'board'];
 export const REQUIRED = ['hot', 'signal', 'trend', 'news', 'desk', 'search', 'sources'];
 export const WEEKDAY_PLAN = {
   1: { label: '월', special: { name: '월요일 미디어산업 위클리', subs: ['플랫폼별 시청률·순위', '금주의 신작', '다음 주 예정작', '6개월 이슈 캘린더', '사업자 동향', '신규·부가서비스'] } },
@@ -114,7 +115,8 @@ const B = {
   grid: b => `<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:start;margin-bottom:14px;">` + b.cols.map(c => `<div>${renderBlocks(c)}</div>`).join('') + `</div>`,
   stack: b => `<div style="display:flex;flex-direction:column;gap:24px;margin-bottom:14px;">` + b.cols.map(c => `<div>${renderBlocks(c)}</div>`).join('') + `</div>`,
   sources: b => `<div style="font-size:11.5px;color:${SUB};line-height:1.9;">${rich(b.html).replace(new RegExp('color:' + V, 'g'), 'color:' + INK)}</div>`,
-  html: b => `<div>${rich(b.html)}</div>`
+  html: b => `<div>${rich(b.html)}</div>`,
+  videos: b => V3.videos(b.items)
 };
 function renderBlocks(list) { return (list || []).map(b => (B[b.type] || B.html)(b)).join(''); }
 
@@ -195,18 +197,14 @@ export function renderReport(data, opts = {}) {
     + (m.coverage ? `<div style="font-size:12.5px;line-height:1.6;color:#E4E0FF;">${esc(m.coverage)}</div>` : '') + `</div></div>`;
   h += `<div style="padding:0 40px 36px;">`;
   if (data.brief && data.brief.length) {
-    h += `<div style="margin:0 -40px;padding:26px 40px;display:grid;grid-template-columns:120px minmax(0,1fr);gap:20px;background:${TINT};border-bottom:3px solid ${V};"><div style="${MONO}font-size:11px;letter-spacing:.06em;color:${V};padding-top:4px;">00<br>오늘의 핵심</div><div style="display:flex;flex-direction:column;gap:14px;">`
+    h += `<div class="cd-brief" style="margin:0 -40px;padding:26px 40px;display:grid;grid-template-columns:120px minmax(0,1fr);gap:20px;background:${TINT};border-bottom:3px solid ${V};"><div style="${MONO}font-size:11px;letter-spacing:.06em;color:${V};padding-top:4px;">00<br>오늘의 핵심</div><div style="display:flex;flex-direction:column;gap:14px;">`
       + data.brief.map(b => `<div style="display:flex;flex-direction:column;gap:3px;"><div style="font-size:17px;font-weight:600;line-height:1.45;">${rich(b.text)}</div>${b.meta ? `<div style="${MONO}font-size:11px;color:${MUTED};">${esc(b.meta)}</div>` : ''}</div>`).join('')
-      + `</div></div>`;
+      + V3.heroKpis(data.heroKpis) + `</div></div>`;
   } else h += slot('00 오늘의 핵심 3줄 — 생성 단계에서 채울 자리 (brief: [{text, meta}] × 3)');
   const t = data.top;
   if (t) {
-    h += `<div style="padding:28px 0 6px;display:flex;flex-direction:column;gap:12px;"><div style="${MONO}font-size:11px;letter-spacing:.06em;color:${V};">01 ${esc(t.kicker || 'TOP STORY')}</div><div style="${DISP}font-size:27px;font-weight:700;line-height:1.32;letter-spacing:-.02em;">${rich(t.title)}</div><div>${(t.paras || []).map(p => P(p, 14.5)).join('')}`
-      + (t.links && t.links.length ? `<div style="display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:4px;">${t.links.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer" style="color:${V};font-size:12px;font-weight:600;">${esc(l.text)}</a>`).join('')}</div>` : '') + `</div>`;
-    const s = data.side;
-    if (s) h += `<div style="display:grid;grid-template-columns:120px minmax(0,1fr);gap:20px;padding-top:16px;margin-top:4px;border-top:1px dashed #999999;"><div style="${MONO}font-size:11px;line-height:1.6;color:${SUB};">SIDE<br>${esc(s.kicker || '')}</div><div style="display:flex;flex-direction:column;gap:4px;"><div style="font-size:17px;font-weight:700;line-height:1.45;">${rich(s.title)}</div>${(s.paras || []).map(p => P(p, 13.5)).join('')}`
-      + (s.links && s.links.length ? `<div style="display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:4px;">${s.links.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer" style="color:${V};font-size:12px;font-weight:600;">${esc(l.text)}</a>`).join('')}</div>` : '') + `</div></div>`;
-    h += `</div>`;
+    h += V3.head(1, 'TOP & SIDE', '', false, 'top') + V3.story(t, false);
+    if (data.side) h += V3.story(data.side, true);
   }
   let n = 1;
   const byId = {}; (data.sections || []).forEach(s => { (byId[s.id] = byId[s.id] || []).push(s); });
@@ -217,11 +215,23 @@ export function renderReport(data, opts = {}) {
     list.forEach(s => {
       n++;
       const def = SECTIONS[id] || {};
-      h += head(n, s.title || def.title, s.sub != null ? s.sub : def.sub, s.pilot != null ? s.pilot : def.pilot);
+      if (id === 'sns' && byId.trend) { n--; return; }
+      const merged = id === 'trend' && byId.sns;
+      const title = merged ? '화력 & SNS 교차검증' : (s.title && id !== 'hot' && id !== 'signal' ? s.title : def.title || s.title);
+      const sub = merged ? '' : (id === 'signal' ? def.sub : (s.sub != null ? s.sub : def.sub));
+      h += V3.head(n, title, sub, s.pilot != null ? s.pilot : def.pilot, id);
       if (id === 'board') { h += boardHtml(m.issueId || ('community-' + m.date), mode === 'full'); return; }
-      h += renderBlocks(s.blocks);
-      (s.subsections || []).forEach((ss, i) => {
-        h += `<div style="display:flex;align-items:baseline;gap:10px;margin:26px 0 10px;padding:10px 12px;background:${TINT};"><span style="${MONO}font-size:11px;color:${V};">${String(n).padStart(2, '0')}-${i + 1}</span><span style="font-size:16px;font-weight:700;">${esc(ss.title)}</span>${ss.sub ? `<span style="font-size:12.5px;color:${SUB};">${esc(ss.sub)}</span>` : ''}</div>` + renderBlocks(ss.blocks);
+      const R = renderBlocks;
+      if (id === 'signal') h += V3.signal(s, R);
+      else if (id === 'hot') h += V3.hot(s, R);
+      else if (id === 'trend') h += V3.trendSns(s, byId.sns && byId.sns[0], R);
+      else if (id === 'news') h += V3.news(s, R);
+      else if (id === 'desk') h += V3.desk(s, R);
+      else if (id === 'search') h += V3.search(s, R);
+      else if (id === 'voc') h += V3.voc(s, R);
+      else h += R(s.blocks);
+      (s.subsections || []).forEach(ss => {
+        h += `<div style="display:flex;align-items:baseline;gap:10px;margin:34px 0 10px;padding:10px 12px;background:${TINT};"><span style="font-size:16px;font-weight:700;">${esc(ss.title)}</span>${ss.sub ? `<span style="font-size:12.5px;color:${SUB};">${esc(ss.sub)}</span>` : ''}</div>` + V3.videos(ss.videos) + renderBlocks(ss.blocks);
       });
     });
   });
@@ -232,5 +242,5 @@ export function renderReport(data, opts = {}) {
   return `<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>커뮤니티 &amp; 미디어플랫폼 리포트 ${esc(m.date)}</title>`
     + `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap">`
     + `<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">`
-    + `<style>body{margin:0;padding:32px 16px;background:#E7E5E0;-webkit-font-smoothing:antialiased;}a:hover{opacity:.7;}</style></head><body>${card}</body></html>`;
+    + `<style>body{margin:0;padding:32px 16px;background:#E7E5E0;-webkit-font-smoothing:antialiased;}a:hover{opacity:.7;}${V3.CSS}</style></head><body>${card}</body></html>`;
 }

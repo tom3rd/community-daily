@@ -6,6 +6,9 @@
 2. **저장소를 받지 못한 경우(add_repo·clone이 2회 모두 실패)**: Google Drive 폴더에서 가장 최근 `community_daily_report_*.html`(2a 디자인)을 읽어 그 마크업·인라인 스타일을 그대로 따라 오늘 내용으로 HTML을 작성해 발행하고, Slack 메시지와 최종 응답에 "템플릿 저장소 접근 실패 — 전일 HTML 구조로 대체 작성"을 명시한다. 이 경우에만 HTML을 직접 쓴다.
 3. 로고 주소는 `--asset-base https://www.tom3rd.com/daily/` 로 고정한다. 폰트는 템플릿이 정한다(SKT Sans 설치 PC → SKT Sans, 그 외 Pretendard).
 
+★★★[2026-10-20 사용자 확정, 2026-10-21 리포트부터 적용] v3 레이아웃 — 요약은 첫 화면, 근거는 접기★★★
+리포트가 글로 빽빽해 요약이 아니라 논문처럼 읽힌다는 피드백에 따라 템플릿을 v3로 바꿨다. 저장소 README 3-1절의 새 필드(heroKpis, top·side의 lead 2문단·so·fig·quote, hot의 short·so·stat, sns.signal, special subsection의 videos, desk의 brief, voc의 glance·summary)를 매일 채운다. 핵심 규칙: (1) TOP·SIDE는 `lead` 정확히 2문단(합계 400~520자) — 기존 `paras` 원문은 그대로 두면 접기로 들어간다. (2) 리틀 시그널·요일 특집·SKB VoC는 분량을 줄이지 않는다(VoC는 설명만 쉬운 말로). (3) 그래픽 숫자는 실제 근거에 있는 값만 쓴다. (4) 이미지는 유튜브 썸네일(`video`·`videos`의 영상 ID)만 쓰고, 뉴스 사진·커뮤니티 캡처·미성년 출연자 중심 영상은 쓰지 않는다. (5) 시그널이 화제보다 앞에, trend와 sns는 한 섹션으로 그려진다(블록 작성 규칙은 그대로).
+
 ★★★[2026-10-09 확정, 영구 고정] 도구 로딩 선행 및 수집 실패 판정 규칙 — 반드시 최우선으로 숙지할 것★★★
 `mcp__API__*`(자체 Worker)와 Notion·Send·Resend·Slack·Google_Drive·KakaotalkChat 도구는 지연 로딩(deferred) 도구일 수 있어 ToolSearch로 스키마를 불러오기 전에는 호출할 수 없다. 2026-10-09 실행에서 이를 불러오지 않고 "네이버/YouTube API가 없다"고 판단해 Top 20과 유튜브·검색량 교차검증을 "수집 실패"로 발행한 사고가 있었다.
 1. **지연 로딩 도구 사전 로드**: KST 날짜 확정 직후, 반드시 ToolSearch의 `select:`로 다음 도구를 최우선으로 불러온다 — mcp__API__datalab_search, mcp__API__search_news, mcp__API__search_cafearticle, mcp__API__gtrends_kr, mcp__API__youtube_popular, mcp__API__youtube_search, mcp__API__youtube_comments, mcp__claude-code-remote__add_repo 및 이후 단계에서 쓰는 Notion·Send·Resend·Slack·Google_Drive·KakaotalkChat 도구.
